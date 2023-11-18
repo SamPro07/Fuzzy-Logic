@@ -101,19 +101,31 @@ a = addmf(a,'output',1,'Not-Approved','trapmf',[50 75 75 100]);
 .
 
 % The rulebase
-%       i1 i2 i3 i4 i5 i6 i7 i8 i9 i10 i11 o1 w op
-rule1 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule2 = [2 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule3 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule4 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule5 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule6 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule7 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule8 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule9 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule10 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule11 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
-rule12 = [1 1 1 1 1 1 1 1 1 1 1 1 1 1];
+% Rule 1: If applicant has a good credit history and a high income, regardless of other factors, then the loan is likely to be approved.
+rule1 = [0 0 0 0 0 4 0 0 0 1 0 1 1 1]; % (High income and good credit history lead to approval)
+%Rule 2: If applicant is self-employed with a very high income but poor credit history, the loan may still be approved.
+rule2 = [0 0 0 0 2 5 0 0 0 2 0 1 1 1]; % (Self-employed with very high income and poor credit)
+%Rule 3: If applicant has a low income, regardless of other factors, the loan is less likely to be approved.
+rule3 = [0 0 0 0 0 2 0 0 0 0 0 2 1 1]; % (Low income leads to non-approval)
+%Rule 4: Married applicants with stable income and good credit history are more likely to get approval.
+rule4 = [0 2 0 0 0 3 0 0 0 1 0 1 1 1]; % (Married with stable income and good credit)
+%Rule 5: Single applicants with high dependants and low income are less likely to be approved.
+rule5 = [0 1 3 0 0 2 0 0 0 0 0 2 1 1]; % (Single with high dependants and low income)
+%Rule 6: Applicants with a doctorate, high income, and good credit history have a high chance of approval.
+rule6 = [0 0 0 3 0 4 0 0 0 1 0 1 1 1]; % (Doctorate, high income, good credit)
+%Rule 7: Applicants with no dependants, moderate income, and living in urban areas are likely to get approved.
+rule7 = [0 0 1 0 0 3 0 0 0 0 1 1 1 1]; % (No dependants, moderate income, urban area)
+%Rule 8: Self-employed individuals with a high loan amount and poor credit history are less likely to be approved.
+rule8 = [0 0 0 0 2 0 0 3 0 2 0 2 1 1]; % (Self-employed, high loan amount, poor credit)
+%Rule 9: Applicants with co-applicants having a medium income, seeking a small loan amount, are likely to be approved.
+rule9 = [0 0 0 0 0 0 2 1 0 0 0 1 1 1]; % (Co-applicant with medium income, small loan amount)
+%Rule 10: Applicants with a short-term loan, low dependants, and residing in semi-urban areas are likely to be approved.
+rule10 = [0 0 1 0 0 0 0 0 1 0 2 1 1 1]; % (Short-term loan, low dependants, semi-urban)
+%Rule 11: Applicants with defaulted credit history and seeking a high loan amount are less likely to be approved.
+rule11 = [0 0 0 0 0 0 0 3 0 2 0 2 1 1]; % (Defaulted credit, high loan amount)
+%Rule 12: Married applicants with no dependants, moderate income, and residing in rural areas have a fair chance of approval.
+rule12 = [0 2 1 0 0 3 0 0 0 0 3 1 1 1]; % (Married, no dependants, moderate income, rural area)
+
 
 
 ruleList = [rule1];
