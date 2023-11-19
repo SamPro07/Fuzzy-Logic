@@ -226,4 +226,5 @@ Error in evalfis (line 98)
 Error in Test1 (line 199)
     eval = evalfis(testData(i, 2:11), a);
  
->> 
+fprintf('%d) In: [%s] => Out: %.2f\n\n', i, num2str(testData(i, 2:12)), eval);
+
