@@ -127,6 +127,66 @@ rule11 = [0 0 0 0 0 0 0 3 0 2 0 2 1 1]; % (Defaulted credit, high loan amount)
 rule12 = [0 2 1 0 0 3 0 0 0 0 3 1 1 1]; % (Married, no dependants, moderate income, rural area)
 
 
+%Rule 13: If the applicant has a poor credit history and a low income, the loan is likely to be not approved.
+rule13 = [0 0 0 0 0 2 0 0 0 2 0 2 1 1]; % (Low income and poor credit history lead to non-approval)
+%Rule 14: Self-employed applicants with a low income and poor credit history are less likely to get approval.
+rule14 = [0 0 0 0 2 2 0 0 0 2 0 2 1 1]; % (Self-employed, low income, and poor credit)
+%Rule 15: High loan amount requests by applicants with a poor credit history are typically not approved.
+rule15 = [0 0 0 0 0 0 0 3 0 2 0 2 1 1]; % (High loan amount and poor credit history)
+%Rule 16: Applicants with high dependants and very low income are less likely to be approved.
+rule16 = [0 0 3 0 0 1 0 0 0 0 0 2 1 1]; % (High dependants and very low income)
+%Rule 17: Married applicants with no stable income and poor credit history are likely to face rejection.
+rule17 = [0 2 0 0 0 2 0 0 0 2 0 2 1 1]; % (Married, unstable income, poor credit)
+%Rule 18: Applicants with a short-term loan request but very low income and poor credit history are less likely to be approved.
+rule18 = [0 0 0 0 0 1 0 0 1 2 0 2 1 1]; % (Short-term loan, very low income, poor credit)
+%Rule 19: Single applicants with a high loan amount request and poor credit history are typically not approved.
+rule19 = [0 1 0 0 0 0 0 3 0 2 0 2 1 1]; % (Single, high loan amount, poor credit)
+%Rule 20: Applicants living in rural areas with low income and high dependents are less likely to get approval.
+rule20 = [0 0 3 0 0 2 0 0 0 0 3 2 1 1]; % (Rural area, low income, high dependants)
+%Rule 21: Applicants with a defaulted credit history and a very high loan amount are typically not approved.
+rule21 = [0 0 0 0 0 0 0 5 0 2 0 2 1 1]; % (Defaulted credit, very high loan amount)
+%Rule 22: Applicants with no co-applicant, seeking a large loan amount, and having a poor credit history are less likely to be approved.
+rule22 = [0 0 0 0 0 0 1 3 0 2 0 2 1 1]; % (No co-applicant, large loan amount, poor credit)
+%Rule 23: Self-employed individuals with no credit history and moderate-income are less likely to be approved.
+rule23 = [0 0 0 0 2 3 0 0 0 0 0 2 1 1]; % (Self-employed, no credit history, moderate income)
+%Rule 24: Applicants with unstable employment, seeking a long-term loan, and having a poor credit history are typically not approved.
+rule24 = [0 0 0 0 0 2 0 0 2 2 0 2 1 1]; % (Unstable employment, long-term loan, poor credit)
+
+%Rule 25: If the applicant is single and self-employed with a medium income, but has a rural property, the loan may be approved.
+rule25 = [0 1 0 0 2 3 0 0 0 0 3 1 1 1];
+%Rule 26: A divorced applicant with no dependants and a graduate degree, applying for a small loan, may get approval.
+rule26 = [0 3 1 1 0 0 0 1 0 0 0 1 1 1];
+%Rule 27: An applicant with a high income but residing in a semi-urban area and seeking a short-term loan might face rejection.
+rule27 = [0 0 0 0 0 4 0 0 1 0 2 2 1 1];
+%Rule 28: A married applicant with high dependants, no credit history, but living in an urban area might get a loan.
+rule28 = [0 2 3 0 0 0 0 0 0 0 1 1 1 1];
+%Rule 29: If the applicant is a postgraduate with low income but no dependants, the loan approval is uncertain.
+rule29 = [0 0 1 2 0 2 0 0 0 0 0 0 1 1];
+%Rule 30: An applicant with a doctorate, high dependants, and self-employed status might be approved for a loan.
+rule30 = [0 0 3 3 2 0 0 0 0 0 0 1 1 1];
+%Rule 31: A female applicant with medium income and urban property, applying for a large loan, may face rejection.
+rule31 = [2 0 0 0 0 3 0 3 0 0 1 2 1 1];
+%Rule 32: An applicant with defaulted credit history, but high income and urban property, might get approval.
+rule32 = [0 0 0 0 0 4 0 0 0 2 1 1 1 1];
+%Rule 33: A graduate with low income, applying for a long-term loan, could be approved if they have a semi-urban property.
+rule33 = [0 0 0 1 0 2 0 0 2 0 2 1 1 1];
+%Rule 34: An unmarried, self-employed applicant with moderate income might get a loan for urban property.
+rule34 = [0 1 0 0 2 3 0 0 0 0 1 1 1 1];
+%Rule 35: A married applicant with a very high income, seeking a high loan amount, might not be approved.
+rule35 = [0 2 0 0 0 5 0 3 0 0 0 2 1 1];
+%Rule 36: An applicant with no co-applicant, medium income, and good credit history, applying for a Class B loan, might be approved.
+rule36 = [0 0 0 0 0 3 1 2 0 1 0 1 1 1];
+
+% The only Or rule that will get approved 
+% Applicant is a Doctorate or self-employed or very high income or high co applicant income then loan may be approved.  
+rule37 = [0 0 0 3 1 5 3 0 0 0 0 1 1 2];
+
+
+
+
+
+
+
 
 ruleList = [rule1];
 
@@ -137,7 +197,7 @@ showrule(a)
 
 ruleview(a)
 
-% The subplots to visualise the system
+% The subplots to visualize the system
 figure(1)
 subplot(1,1,1), plotmf(a, 'input', 9)
 
