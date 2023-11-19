@@ -200,7 +200,7 @@ testData = xlsread(filename);
 for i = 1:size(testData, 1)
     % Assuming the first 11 columns after 'Loan_ID' are the inputs
     eval = evalfis(testData(i, 2:12), a); 
-    fprintf('%d) In(1):%.2f, In(2):%.2f, In(3):%.2f, In(4):%.2f, In(5):%.2f, In(6):%.2f, In(7):%.2f, In(8):%.2f, In(9):%.2f, In(10): %.2f, In(11): %.2f => Out(1): %.2f\n\n', i, testData(i, 1), testData(i, 2), testData(i, 3),testData(i, 4), testData(i, 5), testData(i, 6), testData(i, 7), testData(i, 8), testData(i, 9), testData(i, 10), testData(i, 11) testData(i, 12), eval);
+    fprintf('%d) In(1):%.2f, In(2):%.2f, In(3):%.2f, In(4):%.2f, In(5):%.2f, In(6):%.2f, In(7):%.2f, In(8):%.2f, In(9):%.2f, In(10): %.2f, In(11): %.2f => Out(1): %.2f\n\n', i, testData(i, 1), testData(i, 2), testData(i, 3),testData(i, 4), testData(i, 5), testData(i, 6), testData(i, 7), testData(i, 8), testData(i, 9), testData(i, 10), testData(i, 11), testData(i, 12), eval);
     xlswrite('loan_data_set.xls', eval, 1, sprintf('M%d', i+1)); % Writing the output in column 'M'
 end
 
