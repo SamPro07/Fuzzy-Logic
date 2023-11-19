@@ -213,3 +213,5 @@ subplot(1,1,1), plotmf(a, 'input', 9)
 
 figure(2)
 subplot(1,1,1), plotmf(a, 'output', 1)
+
+fprintf('%d) In: [%s] => Out: %.2f\n\n', i, num2str(testData(i, 2:12)), eval);
