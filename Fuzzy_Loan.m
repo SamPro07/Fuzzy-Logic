@@ -228,3 +228,9 @@ Error in Test1 (line 199)
  
 fprintf('%d) In: [%s] => Out: %.2f\n\n', i, num2str(testData(i, 2:12)), eval);
 
+Error using FuzzyInferenceSystem/addRule
+Rule consequent contains too many Outputs.
+
+Error in Test1 (line 188)
+a = addRule(a, ruleList);
+
