@@ -196,12 +196,14 @@ filename = ('heatingandcooling.xls');
 testData = xlsread(filename);
 
 % The for loop processing the date and printing to the command window
-% Also, it writes the output values to the same heatingandcooling.xls file
-for i=1:size(testData,1)
-        eval = evalfis([testData(i, 1), testData(i, 2), testData(i, 3) ], a);
-        fprintf('%d) In(1): %.2f, In(2) %.2f, In(3) %.2f => Out(1): %.2f Out(2): %.2f  \n\n',i,testData(i, 1),testData(i, 2),testData(i, 3), eval);  
-        xlswrite('heatingandcooling.xls', eval, 1, sprintf('E%d',i+1));
+
+for i = 1:size(testData, 1)
+    % Assuming the first 11 columns after 'Loan_ID' are the inputs
+    eval = evalfis(testData(i, 2:12), a); 
+    fprintf('%d) In: [%s] => Out: %.2f\n\n', i, num2str(testData(i, 2:12)), eval);
+    xlswrite('loan_data_set.xls', eval, 1, sprintf('M%d', i+1)); % Writing the output in column 'M'
 end
+
 
 ruleview(a)
 
