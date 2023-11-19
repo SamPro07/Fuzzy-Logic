@@ -214,4 +214,16 @@ subplot(1,1,1), plotmf(a, 'input', 9)
 figure(2)
 subplot(1,1,1), plotmf(a, 'output', 1)
 
-fprintf('%d) In: [%s] => Out: %.2f\n\n', i, num2str(testData(i, 2:12)), eval);
+--------
+
+Error using fuzzy.internal.utility.evalfis
+Input data must have as many columns as input variables and as many rows as independent sets of
+input values.
+
+Error in evalfis (line 98)
+[varargout{1:nargout}] = fuzzy.internal.utility.evalfis(varargin{:});
+
+Error in Test1 (line 199)
+    eval = evalfis(testData(i, 2:11), a);
+ 
+>> 
