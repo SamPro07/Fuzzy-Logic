@@ -216,21 +216,39 @@ subplot(1,1,1), plotmf(a, 'output', 1)
 
 --------
 
-Error using fuzzy.internal.utility.evalfis
-Input data must have as many columns as input variables and as many rows as independent sets of
-input values.
-
-Error in evalfis (line 98)
-[varargout{1:nargout}] = fuzzy.internal.utility.evalfis(varargin{:});
-
-Error in Test1 (line 199)
-    eval = evalfis(testData(i, 2:11), a);
- 
-fprintf('%d) In: [%s] => Out: %.2f\n\n', i, num2str(testData(i, 2:12)), eval);
-
-Error using FuzzyInferenceSystem/addRule
-Rule consequent contains too many Outputs.
-
-Error in Test1 (line 188)
-a = addRule(a, ruleList);
-
+    '1. If (Applicantincome is High) and (Credit_History is Not-Defaulted) then (Approval Status is Approved) (1)                                                                    '
+    '2. If (SELF-EMPLOYED is NO) and (Applicantincome is Very High) and (Credit_History is Defaulted) then (Approval Status is Approved) (1)                                         '
+    '3. If (Applicantincome is Low) then (Approval Status is Not-Approved) (1)                                                                                                       '
+    '4. If (Marital Status is Married) and (Applicantincome is Medium) and (Credit_History is Not-Defaulted) then (Approval Status is Approved) (1)                                  '
+    '5. If (Marital Status is Single) and (DEPENDANTS is High Dependance) and (Applicantincome is Low) then (Approval Status is Not-Approved) (1)                                    '
+    '6. If (EDUCATION is Doctorate) and (Applicantincome is High) and (Credit_History is Not-Defaulted) then (Approval Status is Approved) (1)                                       '
+    '7. If (DEPENDANTS is low Dependance) and (Applicantincome is Medium) and (Propert_Area is Urban) then (Approval Status is Approved) (1)                                         '
+    '8. If (SELF-EMPLOYED is NO) and (LoanAmount X1000 is Class A) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                      '
+    '9. If (Coapplicantincome is Medium) and (LoanAmount X1000 is Class C) then (Approval Status is Approved) (1)                                                                    '
+    '10. If (DEPENDANTS is low Dependance) and (Loan_Amount_Term is short-term) and (Propert_Area is Semi-Urban) then (Approval Status is Approved) (1)                              '
+    '11. If (LoanAmount X1000 is Class A) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                                               '
+    '12. If (Marital Status is Married) and (DEPENDANTS is low Dependance) and (Applicantincome is Medium) and (Propert_Area is Rural) then (Approval Status is Approved) (1)        '
+    '13. If (Applicantincome is Low) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                                                    '
+    '14. If (SELF-EMPLOYED is NO) and (Applicantincome is Low) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                          '
+    '15. If (LoanAmount X1000 is Class A) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                                               '
+    '16. If (DEPENDANTS is High Dependance) and (Applicantincome is Very Low) then (Approval Status is Not-Approved) (1)                                                             '
+    '17. If (Marital Status is Married) and (Applicantincome is Low) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                    '
+    '18. If (Applicantincome is Very Low) and (Loan_Amount_Term is short-term) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                          '
+    '19. If (Marital Status is Single) and (LoanAmount X1000 is Class A) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                '
+    '20. If (DEPENDANTS is High Dependance) and (Applicantincome is Low) and (Propert_Area is Rural) then (Approval Status is Not-Approved) (1)                                      '
+    '21. If (LoanAmount X1000 is Class A) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                                               '
+    '22. If (Coapplicantincome is Low) and (LoanAmount X1000 is Class A) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                '
+    '23. If (SELF-EMPLOYED is NO) and (Applicantincome is Medium) then (Approval Status is Not-Approved) (1)                                                                         '
+    '24. If (Applicantincome is Low) and (Loan_Amount_Term is Longterm) and (Credit_History is Defaulted) then (Approval Status is Not-Approved) (1)                                 '
+    '25. If (Marital Status is Single) and (SELF-EMPLOYED is NO) and (Applicantincome is Medium) and (Propert_Area is Rural) then (Approval Status is Approved) (1)                  '
+    '26. If (Marital Status is Divorced) and (DEPENDANTS is low Dependance) and (EDUCATION is Graduate) and (LoanAmount X1000 is Class C) then (Approval Status is Approved) (1)     '
+    '27. If (Applicantincome is High) and (Loan_Amount_Term is short-term) and (Propert_Area is Semi-Urban) then (Approval Status is Not-Approved) (1)                               '
+    '28. If (Marital Status is Married) and (DEPENDANTS is High Dependance) and (Propert_Area is Urban) then (Approval Status is Approved) (1)                                       '
+    '29. If (DEPENDANTS is low Dependance) and (EDUCATION is Post Graduate) and (Applicantincome is Low) then (Approval Status is Not-Approved) (1)                                  '
+    '30. If (DEPENDANTS is High Dependance) and (EDUCATION is Doctorate) and (SELF-EMPLOYED is NO) then (Approval Status is Approved) (1)                                            '
+    '31. If (Gender is Female) and (Applicantincome is Medium) and (LoanAmount X1000 is Class A) and (Propert_Area is Urban) then (Approval Status is Not-Approved) (1)              '
+    '32. If (Applicantincome is High) and (Credit_History is Defaulted) and (Propert_Area is Urban) then (Approval Status is Approved) (1)                                           '
+    '33. If (EDUCATION is Graduate) and (Applicantincome is Low) and (Loan_Amount_Term is Longterm) and (Propert_Area is Semi-Urban) then (Approval Status is Approved) (1)          '
+    '34. If (Marital Status is Single) and (SELF-EMPLOYED is NO) and (Applicantincome is Medium) and (Propert_Area is Urban) then (Approval Status is Approved) (1)                  '
+    '35. If (Marital Status is Married) and (Applicantincome is Very High) and (LoanAmount X1000 is Class A) then (Approval Status is Not-Approved) (1)                              ' '36. If (Applicantincome is Medium) and (Coapplicantincome is Low) and (LoanAmount X1000 is Class B) and (Credit_History is Not-Defaulted) then (Approval Status is Approved) (1)'
+    '37. If (EDUCATION is Doctorate) or (SELF-EMPLOYED is YES) or (Applicantincome is Very High) or (Coapplicantincome is High) then (Approval Status is Approved) (1)
