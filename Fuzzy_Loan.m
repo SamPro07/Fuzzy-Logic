@@ -7,6 +7,8 @@ warning('off','fuzzy:general:warnDeprecation_Addrule')
 % Clears the Command Window of clutter
 clc
 
+Logit P = -1.6891(Intercept) + 0.2613(IMP_AFFL) + -0.0519(IMP_AGE) + 1.0004(IMP_GENDER F) + 0.0111(S_MT)
+
 % A declaration of new FIS
 a = newfis('Loan Approval')
 
